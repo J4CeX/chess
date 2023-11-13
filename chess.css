@@ -47,6 +47,28 @@ main {
   margin-top: 50px;
   display: flex;
   justify-content: center;
+  width: 100%;
+}
+
+@media screen and (max-width: 800px) {
+  main #chessboard{
+    width: 600px;
+    height: 600px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  main #chessboard{
+    width: 400px;
+    height: 400px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  main #chessboard{
+    width: 320px;
+    height: 320px;
+  }
 }
 
 #chessboard {
@@ -55,7 +77,8 @@ main {
   margin-bottom: 3rem;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  height: 100%;
+  width: 800px;
+  height: 800px;
   column-gap: 0;
   row-gap: 0;
 }
@@ -66,8 +89,8 @@ main {
   justify-content: center;
   align-items: center;
   border: solid 1px #000;
-  width: 80px;
-  height: 80px;
+  height: 12.5%;
+  width: 100%;
 }
 
 #column-A .square:nth-child(even)
