@@ -13,6 +13,9 @@ html {
   --HEADER-BGCOLOR: #202020;
   --HEADER-COLOR: #fff;
 
+  --MAIN-BGCOLOR-START: #114B5F;
+  --MAIN-BGCOLOR-END: #2BC016;
+
   --FOOTER-BGCOLOR: #000;
 }
 
@@ -31,12 +34,89 @@ header {
   background-color: var(--HEADER-BGCOLOR);
 }
 
+#header-title-line a:any-link {
+  text-decoration: none;
+  color: var(--HEADER-COLOR);
+}
+
 /* MAIN */
 
 main {
   min-height: 100vh;
+  background: linear-gradient(45deg, var(--MAIN-BGCOLOR-START), var(--MAIN-BGCOLOR-END));
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
 }
 
+#chessboard {
+  border: solid 1px #000;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  height: 100%;
+  column-gap: 0;
+  row-gap: 0;
+}
+
+.square {
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px #000;
+  width: 80px;
+  height: 80px;
+}
+
+#column-A .square:nth-child(even)
+{
+  background-color: #000;
+  color: #fff;
+}
+
+#column-B .square:nth-child(odd)
+{
+  background-color: #000;
+  color: #fff;
+}
+
+#column-C .square:nth-child(even)
+{
+  background-color: #000;
+  color: #fff;
+}
+
+#column-D .square:nth-child(odd)
+{
+  background-color: #000;
+  color: #fff;
+}
+
+#column-E .square:nth-child(even)
+{
+  background-color: #000;
+  color: #fff;
+}
+
+#column-F .square:nth-child(odd)
+{
+  background-color: #000;
+  color: #fff;
+}
+
+#column-G .square:nth-child(even)
+{
+  background-color: #000;
+  color: #fff;
+}
+
+#column-H .square:nth-child(odd)
+{
+  background-color: #000;
+  color: #fff;
+}
 /* FOOTER */
 
 footer {
