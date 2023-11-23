@@ -1,13 +1,18 @@
 let whitePlayer = [];
 let blackPlayer = [];
 
-function setStart() {
+
+function displayfigure(figure) {
+  const chessBoard = document.querySelector(`.${(figure.position.x)}-${figure.position.y}`);
+  let newFigure = document.createElement('div');
+  newFigure.classList.add(figure.name);
+  newFigure.classList.add(figure.side);
+  newFigure.innerHTML = `<img src="./images/${figure.side}-pawn.png">`;
+  chessBoard.appendChild(newFigure);
+}
+
+function setChess() {
   for(let i = 'A'.charCodeAt(); i <= 'H'.charCodeAt(); i++) {
-    const chessBoard = document.querySelector(`.${String.fromCharCode(i)}-2`);
-    let pawn = document.createElement('div');
-    pawn.classList.add('pawn');
-    pawn.classList.add('white');
-    pawn.innerHTML = `<img src="./images/white-pawn.png">`;
     whitePlayer.push({
       name: 'pawn',
       side: 'white',
@@ -17,14 +22,8 @@ function setStart() {
         y: 2
       }
     });
-    chessBoard.appendChild(pawn);
   }
   for(let i = 'A'.charCodeAt(); i <= 'H'.charCodeAt(); i++) {
-    const chessBoard = document.querySelector(`.${String.fromCharCode(i)}-7`);
-    let pawn = document.createElement('div');
-    pawn.classList.add('pawn');
-    pawn.classList.add('black');
-    pawn.innerHTML = `<img src="./images/black-pawn.png">`;
     blackPlayer.push({
       name: 'pawn',
       side: 'black',
@@ -34,10 +33,14 @@ function setStart() {
         y: 7
       }
     });
-    chessBoard.appendChild(pawn);
   }
 
-  
+  for(let i = 0; i < whitePlayer.length; i++) {
+    displayfigure(whitePlayer[i]);
+  }
+  for(let i = 0; i < blackPlayer.length; i++) {
+    displayfigure(blackPlayer[i]);
+  }
 }
 
-setStart();
+setChess();
