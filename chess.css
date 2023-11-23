@@ -72,7 +72,7 @@ main {
 }
 
 #chessboard {
-  border: solid 1px #000;
+  box-shadow: 0 0 3px 2px #000;
   margin-top: 3rem;
   margin-bottom: 3rem;
   display: grid;
@@ -84,62 +84,67 @@ main {
 }
 
 .square {
-  background-color: #fff;
+  background-color: rgb(223, 255, 219);
   display: flex;
   justify-content: center;
   align-items: center;
-  border: solid 1px #000;
   height: 12.5%;
   width: 100%;
 }
 
-#column-A .square:nth-child(even)
-{
-  background-color: #000;
-  color: #fff;
+#column-A .square:nth-child(even),
+#column-B .square:nth-child(odd),
+#column-C .square:nth-child(even),
+#column-D .square:nth-child(odd),
+#column-E .square:nth-child(even),
+#column-F .square:nth-child(odd),
+#column-G .square:nth-child(even),
+#column-H .square:nth-child(odd) {
+  background-color: #4d8a45;
 }
 
-#column-B .square:nth-child(odd)
-{
-  background-color: #000;
-  color: #fff;
+.black {
+  
 }
 
-#column-C .square:nth-child(even)
-{
-  background-color: #000;
-  color: #fff;
+.white {
 }
 
-#column-D .square:nth-child(odd)
-{
-  background-color: #000;
-  color: #fff;
+img {
+  width: 100%;
+  height: 100%;
 }
 
-#column-E .square:nth-child(even)
-{
-  background-color: #000;
-  color: #fff;
+/* pionek */
+.pawn {
+
 }
 
-#column-F .square:nth-child(odd)
-{
-  background-color: #000;
-  color: #fff;
+/* wieża */
+.rook {
+
 }
 
-#column-G .square:nth-child(even)
-{
-  background-color: #000;
-  color: #fff;
+/* skoczek */
+.knight {
+
 }
 
-#column-H .square:nth-child(odd)
-{
-  background-color: #000;
-  color: #fff;
+/* goniec */
+.bishop {
+
 }
+
+/* krol */
+.king {
+
+}
+
+/* hetman */
+.queen {
+
+}
+
 /* FOOTER */
 
 footer {
