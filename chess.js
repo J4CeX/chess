@@ -31,6 +31,7 @@ function setChess() {
     createFigure('pawn', 'black', String.fromCharCode(i), 7);
   }
   createFigure('quinn', 'white', 'E', 1);
+  
 
   for(let i = 0; i < whitePlayer.length; i++) {
     displayfigure(whitePlayer[i]);
