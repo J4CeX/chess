@@ -1,6 +1,7 @@
 let whitePlayer = [];
 let blackPlayer = [];
 
+let turn = 'white';
 let idNumber = 1;
 
 function createFigure(nName, nSide, nX, nY) {
@@ -17,11 +18,18 @@ function createFigure(nName, nSide, nX, nY) {
   idNumber++;
 }
 
-function moveFigure() {
-  
+function moveFigure(currentFigure) {
+  if(currentFigure.side === 'white' && turn === 'white') {
+    currentFigure.position.y += 2;
+    turn = 'black';
+  } else if(currentFigure.side == 'black' && turn === 'black') {
+    currentFigure.position.y -= 2;
+    turn = 'white';
+  }
+  displayFigure(currentFigure);
 }
 
-function displayfigure(figure) {
+function displayFigure(figure) {
   const chessBoard = document.querySelector(`.${(figure.position.x)}-${figure.position.y}`);
   let newFigure = document.createElement('div');
   newFigure.classList.add(figure.name);
@@ -33,8 +41,19 @@ function displayfigure(figure) {
 
   const currentFigure = document.getElementById(figure.id);
   currentFigure.addEventListener('click', () => {
-    moveFigure();
+    chessBoard.innerHTML = '';
+    moveFigure(figure);
   });
+}
+
+function displayFigures() {
+  whitePlayer.forEach((figure) => {
+    displayFigure(figure);
+  })
+
+  blackPlayer.forEach((figure) => {
+    displayFigure(figure);
+  })
 }
 
 function setChess() {
@@ -64,12 +83,7 @@ function setChess() {
   createFigure('bishop', 'black', 'C', 8);
   createFigure('bishop', 'black', 'F', 8);
 
-  for(let i = 0; i < whitePlayer.length; i++) {
-    displayfigure(whitePlayer[i]);
-  }
-  for(let i = 0; i < blackPlayer.length; i++) {
-    displayfigure(blackPlayer[i]);
-  }
+  displayFigures();
 }
 
 setChess();
