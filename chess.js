@@ -1,8 +1,11 @@
 let whitePlayer = [];
 let blackPlayer = [];
 
+let idNumber = 1;
+
 function createFigure(nName, nSide, nX, nY) {
   whitePlayer.push({
+    id: idNumber,
     name: nName,
     side: nSide,
     active: true,
@@ -11,6 +14,11 @@ function createFigure(nName, nSide, nX, nY) {
       y: nY
     }
   });
+  idNumber++;
+}
+
+function moveFigure() {
+  
 }
 
 function displayfigure(figure) {
@@ -18,9 +26,15 @@ function displayfigure(figure) {
   let newFigure = document.createElement('div');
   newFigure.classList.add(figure.name);
   newFigure.classList.add(figure.side);
-  newFigure.classList.add('figure')
+  newFigure.classList.add('figure');
+  newFigure.setAttribute('id', figure.id);
   newFigure.innerHTML = `<img src="./images/${figure.side}-${figure.name}.png">`;
   chessBoard.appendChild(newFigure);
+
+  const currentFigure = document.getElementById(figure.id);
+  currentFigure.addEventListener('click', () => {
+    moveFigure();
+  });
 }
 
 function setChess() {
