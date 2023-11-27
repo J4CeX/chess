@@ -1,6 +1,14 @@
 let whitePlayer = [];
 let blackPlayer = [];
 
+let board = [];
+for(let i = 0; i < 8; i++) {
+  board[i] = [];
+  for(let j = 0; j < 8; j++) {
+    board[i][j] = true;
+  }
+}
+
 let turn = 'white';
 let idNumber = 1;
 
@@ -19,17 +27,82 @@ function createFigure(nName, nSide, nX, nY) {
 }
 
 function moveFigure(currentFigure) {
+  let nX = currentFigure.position.x.charCodeAt() - 65;
+  let nY = currentFigure.position.y - 1;
   if(currentFigure.side === 'white' && turn === 'white') {
-    currentFigure.position.y += 2;
-    turn = 'black';
+    switch(currentFigure.name) {
+      case 'pawn': {
+        if(board[nY + 1][nX] === true) {
+          console.log('pawn');
+          board[nY][nX] = true;
+          currentFigure.position.y += 1;
+          
+          turn = 'black';
+        }
+        break;
+      }
+      case 'rook': {
+
+        break;
+      }
+      case 'knight': {
+
+        break;
+      }
+      case 'bishop': {
+
+        break;
+      }
+      case 'hetman': {
+
+        break;
+      }
+      case 'quinn': {
+
+        break;
+      }
+    }
   } else if(currentFigure.side == 'black' && turn === 'black') {
-    currentFigure.position.y -= 2;
-    turn = 'white';
+    switch(currentFigure.name) {
+      case 'pawn': {
+        if(board[nY - 1][nX] === true) {
+          console.log('pawn');
+          board[nY][nX] = true;
+          currentFigure.position.y -= 1;
+
+          turn = 'white';
+        }
+        break;
+      }
+      case 'rook': {
+
+        break;
+      }
+      case 'knight': {
+
+        break;
+      }
+      case 'bishop': {
+
+        break;
+      }
+      case 'hetman': {
+
+        break;
+      }
+      case 'quinn': {
+
+        break;
+      }
+    }
   }
+
   displayFigure(currentFigure);
 }
 
 function displayFigure(figure) {
+  board[figure.position.y - 1][figure.position.x.charCodeAt() - 65] = false;
+
   const chessBoard = document.querySelector(`.${(figure.position.x)}-${figure.position.y}`);
   let newFigure = document.createElement('div');
   newFigure.classList.add(figure.name);
