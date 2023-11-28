@@ -29,15 +29,47 @@ function createFigure(nName, nSide, nX, nY) {
 function moveFigure(currentFigure) {
   let nX = currentFigure.position.x.charCodeAt() - 65;
   let nY = currentFigure.position.y - 1;
+  const figurePosition = document.querySelector(`.${(currentFigure.position.x)}-${currentFigure.position.y}`);
+  const chessBoard = document.getElementById('chessboard');
+
   if(currentFigure.side === 'white' && turn === 'white') {
     switch(currentFigure.name) {
       case 'pawn': {
-        if(board[nY + 1][nX] === true) {
-          console.log('pawn');
-          board[nY][nX] = true;
-          currentFigure.position.y += 1;
+        if(currentFigure.position.y === 2 && board[nY + 2][nX] === true && board[nY + 1][nX] === true) {
+          for(let i = 1; i <= 2; i++)
+          {
+            const move = document.querySelector(`.${(currentFigure.position.x)}-${currentFigure.position.y + i}`);
+            const button = document.createElement('button');
+            button.classList.add('move-button');
+            button.addEventListener('click', () => {
+              board[nY][nX] = true;
+              figurePosition.innerHTML = '';
+              currentFigure.position.y += i;
+              displayFigure(currentFigure);
+              const buttons = document.querySelectorAll('.move-button');
+              buttons.forEach((btn) => {
+                btn.remove();
+              });
+            })
+            button.innerHTML = 'DOT';
+            move.appendChild(button);
+          }
+
+          // const sMove = document.querySelector(`.${(currentFigure.position.x)}-${currentFigure.position.y + 2}`);
           
+
+          // board[nY][nX] = true;
+          // currentFigure.position.y += 2;
+
           turn = 'black';
+        } else {
+          if(board[nY + 1][nX] === true) {
+
+            // board[nY][nX] = true;
+            // currentFigure.position.y += 1;
+            
+            turn = 'black';
+          }
         }
         break;
       }
@@ -66,9 +98,9 @@ function moveFigure(currentFigure) {
     switch(currentFigure.name) {
       case 'pawn': {
         if(board[nY - 1][nX] === true) {
-          console.log('pawn');
-          board[nY][nX] = true;
-          currentFigure.position.y -= 1;
+          
+          // board[nY][nX] = true;
+          // currentFigure.position.y -= 1;
 
           turn = 'white';
         }
@@ -96,25 +128,22 @@ function moveFigure(currentFigure) {
       }
     }
   }
-
-  displayFigure(currentFigure);
 }
 
 function displayFigure(figure) {
   board[figure.position.y - 1][figure.position.x.charCodeAt() - 65] = false;
 
-  const chessBoard = document.querySelector(`.${(figure.position.x)}-${figure.position.y}`);
+  const figurePosition = document.querySelector(`.${(figure.position.x)}-${figure.position.y}`);
   let newFigure = document.createElement('div');
   newFigure.classList.add(figure.name);
   newFigure.classList.add(figure.side);
   newFigure.classList.add('figure');
   newFigure.setAttribute('id', figure.id);
   newFigure.innerHTML = `<img src="./images/${figure.side}-${figure.name}.png">`;
-  chessBoard.appendChild(newFigure);
+  figurePosition.appendChild(newFigure);
 
   const currentFigure = document.getElementById(figure.id);
   currentFigure.addEventListener('click', () => {
-    chessBoard.innerHTML = '';
     moveFigure(figure);
   });
 }
