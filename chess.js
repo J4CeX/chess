@@ -31,6 +31,11 @@ function moveFigure(currentFigure) {
   let nY = currentFigure.position.y - 1;
   const figurePosition = document.querySelector(`.${currentFigure.position.x}-${currentFigure.position.y}`);
 
+  const buttons = document.querySelectorAll('.move-button');
+  buttons.forEach((btn) => {
+    btn.remove();
+  });
+
   if(currentFigure.side === 'white' && turn === 'white') {
     switch(currentFigure.name) {
       case 'pawn': {
@@ -83,6 +88,7 @@ function moveFigure(currentFigure) {
           button.classList.add('move-button');
           button.addEventListener('click', () => {
             board[nY][nX] = true;
+            move.innerHTML = '';
             figurePosition.innerHTML = '';
             currentFigure.position.y += 1;
             currentFigure.position.x = String.fromCharCode(currentFigure.position.x.charCodeAt() - 1);
@@ -103,6 +109,7 @@ function moveFigure(currentFigure) {
           button.classList.add('move-button');
           button.addEventListener('click', () => {
             board[nY][nX] = true;
+            move.innerHTML = '';
             figurePosition.innerHTML = '';
             currentFigure.position.y += 1;
             currentFigure.position.x = String.fromCharCode(currentFigure.position.x.charCodeAt() + 1);
@@ -193,6 +200,7 @@ function moveFigure(currentFigure) {
           button.classList.add('move-button');
           button.addEventListener('click', () => {
             board[nY][nX] = true;
+            move.innerHTML = '';
             figurePosition.innerHTML = '';
             currentFigure.position.y -= 1;
             currentFigure.position.x = String.fromCharCode(currentFigure.position.x.charCodeAt() - 1);
@@ -213,6 +221,7 @@ function moveFigure(currentFigure) {
           button.classList.add('move-button');
           button.addEventListener('click', () => {
             board[nY][nX] = true;
+            move.innerHTML = '';
             figurePosition.innerHTML = '';
             currentFigure.position.y -= 1;
             currentFigure.position.x = String.fromCharCode(currentFigure.position.x.charCodeAt() + 1);
