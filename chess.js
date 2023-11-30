@@ -57,7 +57,6 @@ function moveFigure(currentFigure) {
               removeMoveButtons();
               turn = 'black';
             })
-            button.innerHTML = 'DOT';
             move.appendChild(button);
           }
         } else {
@@ -73,7 +72,6 @@ function moveFigure(currentFigure) {
               removeMoveButtons();
               turn = 'black';
             })
-            button.innerHTML = 'DOT';
             move.appendChild(button);
           }
         }
@@ -92,7 +90,6 @@ function moveFigure(currentFigure) {
             removeMoveButtons();
             turn = 'black';
           })
-          button.innerHTML = 'DOT';
           move.appendChild(button);
         }
         if(board[nY + 1][nX + 1] === false) {
@@ -109,7 +106,6 @@ function moveFigure(currentFigure) {
             removeMoveButtons();
             turn = 'black';
           })
-          button.innerHTML = 'DOT';
           move.appendChild(button);
         }
 
@@ -153,7 +149,6 @@ function moveFigure(currentFigure) {
               removeMoveButtons();
               turn = 'white';
             })
-            button.innerHTML = 'DOT';
             move.appendChild(button);
           }
         } else {
@@ -169,7 +164,6 @@ function moveFigure(currentFigure) {
               removeMoveButtons();
               turn = 'white';
             })
-            button.innerHTML = 'DOT';
             move.appendChild(button);
           }
         }
@@ -188,7 +182,6 @@ function moveFigure(currentFigure) {
             removeMoveButtons();
             turn = 'white';
           })
-          button.innerHTML = 'DOT';
           move.appendChild(button);
         }
         if(board[nY - 1][nX + 1] === false) {
@@ -205,7 +198,6 @@ function moveFigure(currentFigure) {
             removeMoveButtons();
             turn = 'white';
           })
-          button.innerHTML = 'DOT';
           move.appendChild(button);
         }
 

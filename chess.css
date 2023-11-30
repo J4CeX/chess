@@ -155,6 +155,14 @@ main {
 
 /* FOOTER */
 
+.move-button {
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
 footer {
   height: 100px;
   background-color: var(--FOOTER-BGCOLOR);
