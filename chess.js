@@ -12,6 +12,13 @@ for(let i = 0; i < 8; i++) {
 let turn = 'white';
 let idNumber = 1;
 
+function removeMoveButtons() {
+  const buttons = document.querySelectorAll('.move-button');
+  buttons.forEach((btn) => {
+    btn.remove();
+  });
+}
+
 function createFigure(nName, nSide, nX, nY) {
   whitePlayer.push({
     id: idNumber,
@@ -31,10 +38,7 @@ function moveFigure(currentFigure) {
   let nY = currentFigure.position.y - 1;
   const figurePosition = document.querySelector(`.${currentFigure.position.x}-${currentFigure.position.y}`);
 
-  const buttons = document.querySelectorAll('.move-button');
-  buttons.forEach((btn) => {
-    btn.remove();
-  });
+  removeMoveButtons();
 
   if(currentFigure.side === 'white' && turn === 'white') {
     switch(currentFigure.name) {
@@ -50,16 +54,12 @@ function moveFigure(currentFigure) {
               figurePosition.innerHTML = '';
               currentFigure.position.y += i;
               displayFigure(currentFigure);
-              const buttons = document.querySelectorAll('.move-button');
-              buttons.forEach((btn) => {
-                btn.remove();
-              });
+              removeMoveButtons();
+              turn = 'black';
             })
             button.innerHTML = 'DOT';
             move.appendChild(button);
           }
-
-          turn = 'black';
         } else {
           if(board[nY + 1][nX] === true) {
             const move = document.querySelector(`.${currentFigure.position.x}-${currentFigure.position.y + 1}`);
@@ -70,15 +70,11 @@ function moveFigure(currentFigure) {
               figurePosition.innerHTML = '';
               currentFigure.position.y += 1;
               displayFigure(currentFigure);
-              const buttons = document.querySelectorAll('.move-button');
-              buttons.forEach((btn) => {
-                btn.remove();
-              });
+              removeMoveButtons();
+              turn = 'black';
             })
             button.innerHTML = 'DOT';
             move.appendChild(button);
-            
-            turn = 'black';
           }
         }
 
@@ -93,15 +89,11 @@ function moveFigure(currentFigure) {
             currentFigure.position.y += 1;
             currentFigure.position.x = String.fromCharCode(currentFigure.position.x.charCodeAt() - 1);
             displayFigure(currentFigure);
-            const buttons = document.querySelectorAll('.move-button');
-            buttons.forEach((btn) => {
-              btn.remove();
-            });
+            removeMoveButtons();
+            turn = 'black';
           })
           button.innerHTML = 'DOT';
           move.appendChild(button);
-          
-          turn = 'black';
         }
         if(board[nY + 1][nX + 1] === false) {
           const move = document.querySelector(`.${String.fromCharCode(currentFigure.position.x.charCodeAt() + 1)}-${currentFigure.position.y + 1}`);
@@ -114,15 +106,11 @@ function moveFigure(currentFigure) {
             currentFigure.position.y += 1;
             currentFigure.position.x = String.fromCharCode(currentFigure.position.x.charCodeAt() + 1);
             displayFigure(currentFigure);
-            const buttons = document.querySelectorAll('.move-button');
-            buttons.forEach((btn) => {
-              btn.remove();
-            });
+            removeMoveButtons();
+            turn = 'black';
           })
           button.innerHTML = 'DOT';
           move.appendChild(button);
-          
-          turn = 'black';
         }
 
         break;
@@ -162,16 +150,12 @@ function moveFigure(currentFigure) {
               figurePosition.innerHTML = '';
               currentFigure.position.y -= i;
               displayFigure(currentFigure);
-              const buttons = document.querySelectorAll('.move-button');
-              buttons.forEach((btn) => {
-                btn.remove();
-              });
+              removeMoveButtons();
+              turn = 'white';
             })
             button.innerHTML = 'DOT';
             move.appendChild(button);
           }
-
-          turn = 'white';
         } else {
           if(board[nY - 1][nX] === true) {
             const move = document.querySelector(`.${currentFigure.position.x}-${currentFigure.position.y - 1}`);
@@ -182,15 +166,11 @@ function moveFigure(currentFigure) {
               figurePosition.innerHTML = '';
               currentFigure.position.y -= 1;
               displayFigure(currentFigure);
-              const buttons = document.querySelectorAll('.move-button');
-              buttons.forEach((btn) => {
-                btn.remove();
-              });
+              removeMoveButtons();
+              turn = 'white';
             })
             button.innerHTML = 'DOT';
             move.appendChild(button);
-            
-            turn = 'white';
           }
         }
 
@@ -205,15 +185,11 @@ function moveFigure(currentFigure) {
             currentFigure.position.y -= 1;
             currentFigure.position.x = String.fromCharCode(currentFigure.position.x.charCodeAt() - 1);
             displayFigure(currentFigure);
-            const buttons = document.querySelectorAll('.move-button');
-            buttons.forEach((btn) => {
-              btn.remove();
-            });
+            removeMoveButtons();
+            turn = 'white';
           })
           button.innerHTML = 'DOT';
           move.appendChild(button);
-          
-          turn = 'black';
         }
         if(board[nY - 1][nX + 1] === false) {
           const move = document.querySelector(`.${String.fromCharCode(currentFigure.position.x.charCodeAt() + 1)}-${currentFigure.position.y - 1}`);
@@ -226,15 +202,11 @@ function moveFigure(currentFigure) {
             currentFigure.position.y -= 1;
             currentFigure.position.x = String.fromCharCode(currentFigure.position.x.charCodeAt() + 1);
             displayFigure(currentFigure);
-            const buttons = document.querySelectorAll('.move-button');
-            buttons.forEach((btn) => {
-              btn.remove();
-            });
+            removeMoveButtons();
+            turn = 'white';
           })
           button.innerHTML = 'DOT';
           move.appendChild(button);
-          
-          turn = 'black';
         }
 
         break;
