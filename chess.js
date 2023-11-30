@@ -5,7 +5,7 @@ let board = [];
 for(let i = 0; i < 8; i++) {
   board[i] = [];
   for(let j = 0; j < 8; j++) {
-    board[i][j] = true;
+    board[i][j] = 'none';
   }
 }
 
@@ -43,14 +43,14 @@ function moveFigure(currentFigure) {
   if(currentFigure.side === 'white' && turn === 'white') {
     switch(currentFigure.name) {
       case 'pawn': {
-        if(currentFigure.position.y === 2 && board[nY + 2][nX] === true && board[nY + 1][nX] === true) {
+        if(currentFigure.position.y === 2 && board[nY + 2][nX] === 'none' && board[nY + 1][nX] === 'none') {
           for(let i = 1; i <= 2; i++)
           {
             const move = document.querySelector(`.${currentFigure.position.x}-${currentFigure.position.y + i}`);
             const button = document.createElement('button');
             button.classList.add('move-button');
             button.addEventListener('click', () => {
-              board[nY][nX] = true;
+              board[nY][nX] = 'none';
               figurePosition.innerHTML = '';
               currentFigure.position.y += i;
               displayFigure(currentFigure);
@@ -60,12 +60,12 @@ function moveFigure(currentFigure) {
             move.appendChild(button);
           }
         } else {
-          if(board[nY + 1][nX] === true) {
+          if(board[nY + 1][nX] === 'none') {
             const move = document.querySelector(`.${currentFigure.position.x}-${currentFigure.position.y + 1}`);
             const button = document.createElement('button');
             button.classList.add('move-button');
             button.addEventListener('click', () => {
-              board[nY][nX] = true;
+              board[nY][nX] = 'none';
               figurePosition.innerHTML = '';
               currentFigure.position.y += 1;
               displayFigure(currentFigure);
@@ -76,12 +76,12 @@ function moveFigure(currentFigure) {
           }
         }
 
-        if(board[nY + 1][nX - 1] === false) {
+        if(board[nY + 1][nX - 1] === 'black') {
           const move = document.querySelector(`.${String.fromCharCode(currentFigure.position.x.charCodeAt() - 1)}-${currentFigure.position.y + 1}`);
           const button = document.createElement('button');
           button.classList.add('move-button');
           button.addEventListener('click', () => {
-            board[nY][nX] = true;
+            board[nY][nX] = 'none';
             move.innerHTML = '';
             figurePosition.innerHTML = '';
             currentFigure.position.y += 1;
@@ -92,12 +92,12 @@ function moveFigure(currentFigure) {
           })
           move.appendChild(button);
         }
-        if(board[nY + 1][nX + 1] === false) {
+        if(board[nY + 1][nX + 1] === 'black') {
           const move = document.querySelector(`.${String.fromCharCode(currentFigure.position.x.charCodeAt() + 1)}-${currentFigure.position.y + 1}`);
           const button = document.createElement('button');
           button.classList.add('move-button');
           button.addEventListener('click', () => {
-            board[nY][nX] = true;
+            board[nY][nX] = 'none';
             move.innerHTML = '';
             figurePosition.innerHTML = '';
             currentFigure.position.y += 1;
@@ -135,14 +135,14 @@ function moveFigure(currentFigure) {
   } else if(currentFigure.side == 'black' && turn === 'black') {
     switch(currentFigure.name) {
       case 'pawn': {
-        if(currentFigure.position.y === 7 && board[nY - 2][nX] === true && board[nY - 1][nX] === true) {
+        if(currentFigure.position.y === 7 && board[nY - 2][nX] === 'none' && board[nY - 1][nX] === 'none') {
           for(let i = 1; i <= 2; i++)
           {
             const move = document.querySelector(`.${currentFigure.position.x}-${currentFigure.position.y - i}`);
             const button = document.createElement('button');
             button.classList.add('move-button');
             button.addEventListener('click', () => {
-              board[nY][nX] = true;
+              board[nY][nX] = 'none';
               figurePosition.innerHTML = '';
               currentFigure.position.y -= i;
               displayFigure(currentFigure);
@@ -152,12 +152,12 @@ function moveFigure(currentFigure) {
             move.appendChild(button);
           }
         } else {
-          if(board[nY - 1][nX] === true) {
+          if(board[nY - 1][nX] === 'none') {
             const move = document.querySelector(`.${currentFigure.position.x}-${currentFigure.position.y - 1}`);
             const button = document.createElement('button');
             button.classList.add('move-button');
             button.addEventListener('click', () => {
-              board[nY][nX] = true;
+              board[nY][nX] = 'none';
               figurePosition.innerHTML = '';
               currentFigure.position.y -= 1;
               displayFigure(currentFigure);
@@ -168,12 +168,12 @@ function moveFigure(currentFigure) {
           }
         }
 
-        if(board[nY - 1][nX - 1] === false) {
+        if(board[nY - 1][nX - 1] === 'white') {
           const move = document.querySelector(`.${String.fromCharCode(currentFigure.position.x.charCodeAt() - 1)}-${currentFigure.position.y - 1}`);
           const button = document.createElement('button');
           button.classList.add('move-button');
           button.addEventListener('click', () => {
-            board[nY][nX] = true;
+            board[nY][nX] = 'none';
             move.innerHTML = '';
             figurePosition.innerHTML = '';
             currentFigure.position.y -= 1;
@@ -184,12 +184,12 @@ function moveFigure(currentFigure) {
           })
           move.appendChild(button);
         }
-        if(board[nY - 1][nX + 1] === false) {
+        if(board[nY - 1][nX + 1] === 'white') {
           const move = document.querySelector(`.${String.fromCharCode(currentFigure.position.x.charCodeAt() + 1)}-${currentFigure.position.y - 1}`);
           const button = document.createElement('button');
           button.classList.add('move-button');
           button.addEventListener('click', () => {
-            board[nY][nX] = true;
+            board[nY][nX] = 'none';
             move.innerHTML = '';
             figurePosition.innerHTML = '';
             currentFigure.position.y -= 1;
@@ -228,7 +228,11 @@ function moveFigure(currentFigure) {
 }
 
 function displayFigure(figure) {
-  board[figure.position.y - 1][figure.position.x.charCodeAt() - 65] = false;
+  if(figure.side === 'white') {
+    board[figure.position.y - 1][figure.position.x.charCodeAt() - 65] = 'white';
+  } else if(figure.side === 'black') {
+    board[figure.position.y - 1][figure.position.x.charCodeAt() - 65] = 'black';
+  }
 
   const figurePosition = document.querySelector(`.${figure.position.x}-${figure.position.y}`);
   let newFigure = document.createElement('div');
