@@ -91,6 +91,7 @@ main {
   align-items: center;
   height: 12.5%;
   width: 100%;
+  position: relative;
 }
 
 #column-A .square:nth-child(even),
@@ -156,11 +157,12 @@ main {
 /* FOOTER */
 
 .move-button {
-  width: 50%;
-  height: 50%;
+  width: 60%;
+  height: 60%;
   border-radius: 50%;
   border: none;
   background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
 }
 
 footer {
