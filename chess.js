@@ -140,23 +140,26 @@ function moveFigure(currentFigure) {
       case 'quinn': {
         for(let i = -1; i <= 1; i++) {
           for(let j = -1; j <= 1; j++) {
-            const move = document.querySelector(`.${currentFigure.position.x + i}-${currentFigure.position.y + j}`);
-            console.log(inBoard(currentFigure.position.x + i, currentFigure.position.y + j));
-            if(inBoard(currentFigure.position.x + i, currentFigure.position.y + j)) {
-              const button = document.createElement('button');
-              button.classList.add('move-button');
-              console.log(String.fromCharCode(currentFigure.position.x.charCodeAt() + i));
-              console.log(currentFigure.position.y + j);
-              button.addEventListener('click', () => {
-                // board[nY][nX] = 'none';
-                // figurePosition.innerHTML = '';
-                // currentFigure.position.y += j;
-                // String.fromCharCode(currentFigure.position.x.charCodeAt() += i);
-                // displayFigure(currentFigure);
-                // removeMoveButtons();
-                turn = 'black';
-              })
-              move.appendChild(button);
+            const moveX = String.fromCharCode(currentFigure.position.x.charCodeAt() + i);
+            const moveY = currentFigure.position.y + j;
+
+            if(inBoard(moveX, moveY)) {
+              const move = document.querySelector(`.${moveX}-${moveY}`);
+              if(board[nY + j][nX + i] === 'none' || board[nY + j][nX + i] === 'black') {
+                const button = document.createElement('button');
+                button.classList.add('move-button');
+                button.addEventListener('click', () => {
+                  board[nY][nX] = 'none';
+                  figurePosition.innerHTML = '';
+                  move.innerHTML = ''
+                  currentFigure.position.y = moveY;
+                  currentFigure.position.x = moveX;
+                  displayFigure(currentFigure);
+                  removeMoveButtons();
+                  turn = 'black';
+                });
+                move.appendChild(button);
+              }
             }
           }
         }
@@ -251,7 +254,31 @@ function moveFigure(currentFigure) {
         break;
       }
       case 'quinn': {
-        
+        for(let i = -1; i <= 1; i++) {
+          for(let j = -1; j <= 1; j++) {
+            const moveX = String.fromCharCode(currentFigure.position.x.charCodeAt() + i);
+            const moveY = currentFigure.position.y + j;
+
+            if(inBoard(moveX, moveY)) {
+              const move = document.querySelector(`.${moveX}-${moveY}`);
+              if(board[nY + j][nX + i] === 'none' || board[nY + j][nX + i] === 'white') {
+                const button = document.createElement('button');
+                button.classList.add('move-button');
+                button.addEventListener('click', () => {
+                  board[nY][nX] = 'none';
+                  figurePosition.innerHTML = '';
+                  move.innerHTML = ''
+                  currentFigure.position.y = moveY;
+                  currentFigure.position.x = moveX;
+                  displayFigure(currentFigure);
+                  removeMoveButtons();
+                  turn = 'white';
+                });
+                move.appendChild(button);
+              }
+            }
+          }
+        }
         break;
       }
     }
