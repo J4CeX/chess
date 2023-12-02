@@ -122,13 +122,13 @@ function moveFigure(currentFigure) {
         break;
       }
       case 'rook': {
-        for(let i = -7; i <= 7; i++) {
+        for(let i = 1; i < 8; i++) {
           const moveX = String.fromCharCode(currentFigure.position.x.charCodeAt() + i);
           const moveY = currentFigure.position.y;
 
           if(inBoard(moveX, moveY)) {
             const move = document.querySelector(`.${moveX}-${moveY}`);
-            if(board[nY][nX + i] === 'none' || board[nY][nX + i] === 'black') { 
+            if(board[nY][nX + i] === 'none') { 
               const button = document.createElement('button');
               button.classList.add('move-button');
               button.addEventListener('click', () => {
@@ -142,18 +142,74 @@ function moveFigure(currentFigure) {
                 turn = 'black';
               });
               move.appendChild(button);
-            } else if(board[nY][nX + i] === 'white' && nX + i != nX){
+            } else if(board[nY][nX + i] === 'black') {
+              const button = document.createElement('button');
+              button.classList.add('move-button');
+              button.addEventListener('click', () => {
+                board[nY][nX] = 'none';
+                figurePosition.innerHTML = '';
+                move.innerHTML = ''
+                currentFigure.position.y = moveY;
+                currentFigure.position.x = moveX;
+                displayFigure(currentFigure);
+                removeMoveButtons();
+                turn = 'black';
+              });
+              move.appendChild(button);
+              break;
+            } else if(board[nY][nX + i] === 'white'){
               break;
             }
           }
         }
-        for(let i = -7; i <= 7; i++) {
+        for(let i = -1; i > -8; i--) {
+          const moveX = String.fromCharCode(currentFigure.position.x.charCodeAt() + i);
+          const moveY = currentFigure.position.y;
+
+          if(inBoard(moveX, moveY)) {
+            const move = document.querySelector(`.${moveX}-${moveY}`);
+            if(board[nY][nX + i] === 'none') { 
+              const button = document.createElement('button');
+              button.classList.add('move-button');
+              button.addEventListener('click', () => {
+                board[nY][nX] = 'none';
+                figurePosition.innerHTML = '';
+                move.innerHTML = ''
+                currentFigure.position.y = moveY;
+                currentFigure.position.x = moveX;
+                displayFigure(currentFigure);
+                removeMoveButtons();
+                turn = 'black';
+              });
+              move.appendChild(button);
+            } else if(board[nY][nX + i] === 'black') {
+              const button = document.createElement('button');
+              button.classList.add('move-button');
+              button.addEventListener('click', () => {
+                board[nY][nX] = 'none';
+                figurePosition.innerHTML = '';
+                move.innerHTML = ''
+                currentFigure.position.y = moveY;
+                currentFigure.position.x = moveX;
+                displayFigure(currentFigure);
+                removeMoveButtons();
+                turn = 'black';
+              });
+              move.appendChild(button);
+              break;
+            } else if(board[nY][nX + i] === 'white'){
+              break;
+            }
+          }
+        }
+
+        for(let i = 1; i < 8; i++) {
           const moveX = currentFigure.position.x;
           const moveY = currentFigure.position.y + i;
 
           if(inBoard(moveX, moveY)) {
             const move = document.querySelector(`.${moveX}-${moveY}`);
-            if(board[nY + i][nX] === 'none' || board[nY + i][nX] === 'black') { 
+            if(board[nY + i][nX] === 'none') { 
               const button = document.createElement('button');
               button.classList.add('move-button');
               button.addEventListener('click', () => {
@@ -167,7 +223,62 @@ function moveFigure(currentFigure) {
                 turn = 'black';
               });
               move.appendChild(button);
-            } else if(board[nY + i][nX] === 'white' && nY + i != nY){
+            } else if(board[nY + i][nX] === 'black') {
+              const button = document.createElement('button');
+              button.classList.add('move-button');
+              button.addEventListener('click', () => {
+                board[nY][nX] = 'none';
+                figurePosition.innerHTML = '';
+                move.innerHTML = ''
+                currentFigure.position.y = moveY;
+                currentFigure.position.x = moveX;
+                displayFigure(currentFigure);
+                removeMoveButtons();
+                turn = 'black';
+              });
+              move.appendChild(button);
+              break;
+            } else if(board[nY + i][nX] === 'white'){
+              break;
+            }
+          }
+        }
+        for(let i = -1; i > -8; i--) {
+          const moveX = currentFigure.position.x;
+          const moveY = currentFigure.position.y + i;
+
+          if(inBoard(moveX, moveY)) {
+            const move = document.querySelector(`.${moveX}-${moveY}`);
+            if(board[nY + i][nX] === 'none') { 
+              const button = document.createElement('button');
+              button.classList.add('move-button');
+              button.addEventListener('click', () => {
+                board[nY][nX] = 'none';
+                figurePosition.innerHTML = '';
+                move.innerHTML = ''
+                currentFigure.position.y = moveY;
+                currentFigure.position.x = moveX;
+                displayFigure(currentFigure);
+                removeMoveButtons();
+                turn = 'black';
+              });
+              move.appendChild(button);
+            } else if(board[nY + i][nX] === 'black') {
+              const button = document.createElement('button');
+              button.classList.add('move-button');
+              button.addEventListener('click', () => {
+                board[nY][nX] = 'none';
+                figurePosition.innerHTML = '';
+                move.innerHTML = ''
+                currentFigure.position.y = moveY;
+                currentFigure.position.x = moveX;
+                displayFigure(currentFigure);
+                removeMoveButtons();
+                turn = 'black';
+              });
+              move.appendChild(button);
+              break;
+            } else if(board[nY + i][nX] === 'white'){
               break;
             }
           }
@@ -287,13 +398,13 @@ function moveFigure(currentFigure) {
         break;
       }
       case 'rook': {
-        for(let i = -7; i <= 7; i++) {
+        for(let i = 1; i < 8; i++) {
           const moveX = String.fromCharCode(currentFigure.position.x.charCodeAt() + i);
           const moveY = currentFigure.position.y;
 
           if(inBoard(moveX, moveY)) {
             const move = document.querySelector(`.${moveX}-${moveY}`);
-            if(board[nY][nX + i] === 'none' || board[nY][nX + i] === 'white') { 
+            if(board[nY][nX + i] === 'none') { 
               const button = document.createElement('button');
               button.classList.add('move-button');
               button.addEventListener('click', () => {
@@ -307,18 +418,74 @@ function moveFigure(currentFigure) {
                 turn = 'white';
               });
               move.appendChild(button);
-            } else if(board[nY][nX + i] === 'black' && nX + i != nX){
+            } else if(board[nY][nX + i] === 'white') {
+              const button = document.createElement('button');
+              button.classList.add('move-button');
+              button.addEventListener('click', () => {
+                board[nY][nX] = 'none';
+                figurePosition.innerHTML = '';
+                move.innerHTML = ''
+                currentFigure.position.y = moveY;
+                currentFigure.position.x = moveX;
+                displayFigure(currentFigure);
+                removeMoveButtons();
+                turn = 'white';
+              });
+              move.appendChild(button);
+              break;
+            } else if(board[nY][nX + i] === 'black'){
               break;
             }
           }
         }
-        for(let i = -7; i <= 7; i++) {
+        for(let i = -1; i > -8; i--) {
+          const moveX = String.fromCharCode(currentFigure.position.x.charCodeAt() + i);
+          const moveY = currentFigure.position.y;
+
+          if(inBoard(moveX, moveY)) {
+            const move = document.querySelector(`.${moveX}-${moveY}`);
+            if(board[nY][nX + i] === 'none') { 
+              const button = document.createElement('button');
+              button.classList.add('move-button');
+              button.addEventListener('click', () => {
+                board[nY][nX] = 'none';
+                figurePosition.innerHTML = '';
+                move.innerHTML = ''
+                currentFigure.position.y = moveY;
+                currentFigure.position.x = moveX;
+                displayFigure(currentFigure);
+                removeMoveButtons();
+                turn = 'white';
+              });
+              move.appendChild(button);
+            } else if(board[nY][nX + i] === 'white') {
+              const button = document.createElement('button');
+              button.classList.add('move-button');
+              button.addEventListener('click', () => {
+                board[nY][nX] = 'none';
+                figurePosition.innerHTML = '';
+                move.innerHTML = ''
+                currentFigure.position.y = moveY;
+                currentFigure.position.x = moveX;
+                displayFigure(currentFigure);
+                removeMoveButtons();
+                turn = 'white';
+              });
+              move.appendChild(button);
+              break;
+            } else if(board[nY][nX + i] === 'black'){
+              break;
+            }
+          }
+        }
+
+        for(let i = 1; i < 8; i++) {
           const moveX = currentFigure.position.x;
           const moveY = currentFigure.position.y + i;
 
           if(inBoard(moveX, moveY)) {
             const move = document.querySelector(`.${moveX}-${moveY}`);
-            if(board[nY + i][nX] === 'none' || board[nY + i][nX] === 'white') { 
+            if(board[nY + i][nX] === 'none') { 
               const button = document.createElement('button');
               button.classList.add('move-button');
               button.addEventListener('click', () => {
@@ -332,7 +499,62 @@ function moveFigure(currentFigure) {
                 turn = 'white';
               });
               move.appendChild(button);
-            } else if(board[nY + i][nX] === 'black' && nY + i != nY){
+            } else if(board[nY + i][nX] === 'white') {
+              const button = document.createElement('button');
+              button.classList.add('move-button');
+              button.addEventListener('click', () => {
+                board[nY][nX] = 'none';
+                figurePosition.innerHTML = '';
+                move.innerHTML = ''
+                currentFigure.position.y = moveY;
+                currentFigure.position.x = moveX;
+                displayFigure(currentFigure);
+                removeMoveButtons();
+                turn = 'white';
+              });
+              move.appendChild(button);
+              break;
+            } else if(board[nY + i][nX] === 'black'){
+              break;
+            }
+          }
+        }
+        for(let i = -1; i > -8; i--) {
+          const moveX = currentFigure.position.x;
+          const moveY = currentFigure.position.y + i;
+
+          if(inBoard(moveX, moveY)) {
+            const move = document.querySelector(`.${moveX}-${moveY}`);
+            if(board[nY + i][nX] === 'none') { 
+              const button = document.createElement('button');
+              button.classList.add('move-button');
+              button.addEventListener('click', () => {
+                board[nY][nX] = 'none';
+                figurePosition.innerHTML = '';
+                move.innerHTML = ''
+                currentFigure.position.y = moveY;
+                currentFigure.position.x = moveX;
+                displayFigure(currentFigure);
+                removeMoveButtons();
+                turn = 'white';
+              });
+              move.appendChild(button);
+            } else if(board[nY + i][nX] === 'white') {
+              const button = document.createElement('button');
+              button.classList.add('move-button');
+              button.addEventListener('click', () => {
+                board[nY][nX] = 'none';
+                figurePosition.innerHTML = '';
+                move.innerHTML = ''
+                currentFigure.position.y = moveY;
+                currentFigure.position.x = moveX;
+                displayFigure(currentFigure);
+                removeMoveButtons();
+                turn = 'white';
+              });
+              move.appendChild(button);
+              break;
+            } else if(board[nY + i][nX] === 'black'){
               break;
             }
           }
@@ -381,7 +603,6 @@ function moveFigure(currentFigure) {
       }
     }
   }
-  console.log(board);
 }
 
 function displayFigure(figure) {
