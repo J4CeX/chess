@@ -33,6 +33,7 @@ header {
   padding: 0.5rem;
   color: var(--HEADER-COLOR);
   background-color: var(--HEADER-BGCOLOR);
+  z-index: 9999;
 }
 
 #header-title-line a:any-link {
