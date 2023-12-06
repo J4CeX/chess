@@ -566,6 +566,12 @@ function moveFigure(currentFigure) {
 }
 
 function displayFigure(figure) {
+  if(figure.side === 'white' && board[figure.position.y - 1][figure.position.x.charCodeAt() - 65] === 'black') {
+    console.log('black strike!');
+  } else if(figure.side === 'black' && board[figure.position.y - 1][figure.position.x.charCodeAt() - 65] === 'white') {
+    console.log('white strike!')
+  }
+
   if(figure.side === 'white') {
     board[figure.position.y - 1][figure.position.x.charCodeAt() - 65] = 'white';
   } else if(figure.side === 'black') {
