@@ -22,6 +22,31 @@ function inBoard(x, y) {
   }
 }
 
+function isEnd() {
+  let count = 0;
+  whitePlayer.forEach((figure) => {
+    if(figure.active === true) {
+      count++;
+    }
+  });
+  if(count === 0) {
+    console.log("Black wins!");
+    return;
+  }
+
+  count = 0;
+
+  blackPlayer.forEach((figure) => {
+    if(figure.active === true) {
+      count++;
+    }
+  });
+  if(count === 0) {
+    console.log("White wins!");
+    return;
+  }
+}
+
 function removeMoveButtons() {
   const buttons = document.querySelectorAll('.move-button');
   buttons.forEach((btn) => {
@@ -122,6 +147,7 @@ function renderMoves(currentFigure, startX, startY, side, opponentsSide) {
           currentFigure.position.x = moveX;
           displayFigure(currentFigure);
           removeMoveButtons();
+          isEnd();
           turn = opponentsSide;
         });
         move.appendChild(button);
@@ -204,6 +230,7 @@ function moveFigure(currentFigure) {
             currentFigure.position.x = String.fromCharCode(currentFigure.position.x.charCodeAt() - 1);
             displayFigure(currentFigure);
             removeMoveButtons();
+            isEnd();
             turn = 'black';
           })
           move.appendChild(button);
@@ -222,6 +249,7 @@ function moveFigure(currentFigure) {
             currentFigure.position.x = String.fromCharCode(currentFigure.position.x.charCodeAt() + 1);
             displayFigure(currentFigure);
             removeMoveButtons();
+            isEnd();
             turn = 'black';
           })
           move.appendChild(button);
@@ -270,6 +298,7 @@ function moveFigure(currentFigure) {
                 currentFigure.position.x = moveX;
                 displayFigure(currentFigure);
                 removeMoveButtons();
+                isEnd();
                 turn = 'black';
               });
               move.appendChild(button);
@@ -311,6 +340,7 @@ function moveFigure(currentFigure) {
                 currentFigure.position.x = moveX;
                 displayFigure(currentFigure);
                 removeMoveButtons();
+                isEnd();
                 turn = 'black';
               });
               move.appendChild(button);
@@ -352,6 +382,7 @@ function moveFigure(currentFigure) {
                 currentFigure.position.x = moveX;
                 displayFigure(currentFigure);
                 removeMoveButtons();
+                isEnd();
                 turn = 'black';
               });
               move.appendChild(button);
@@ -393,6 +424,7 @@ function moveFigure(currentFigure) {
                 currentFigure.position.x = moveX;
                 displayFigure(currentFigure);
                 removeMoveButtons();
+                isEnd();
                 turn = 'black';
               });
               move.appendChild(button);
@@ -457,6 +489,7 @@ function moveFigure(currentFigure) {
                   currentFigure.position.x = moveX;
                   displayFigure(currentFigure);
                   removeMoveButtons();
+                  isEnd();
                   turn = 'black';
                 });
                 move.appendChild(button);
@@ -517,6 +550,7 @@ function moveFigure(currentFigure) {
             currentFigure.position.x = String.fromCharCode(currentFigure.position.x.charCodeAt() - 1);
             displayFigure(currentFigure);
             removeMoveButtons();
+            isEnd();
             turn = 'white';
           })
           move.appendChild(button);
@@ -535,6 +569,7 @@ function moveFigure(currentFigure) {
             currentFigure.position.x = String.fromCharCode(currentFigure.position.x.charCodeAt() + 1);
             displayFigure(currentFigure);
             removeMoveButtons();
+            isEnd();
             turn = 'white';
           })
           move.appendChild(button);
@@ -583,6 +618,7 @@ function moveFigure(currentFigure) {
                 currentFigure.position.x = moveX;
                 displayFigure(currentFigure);
                 removeMoveButtons();
+                isEnd();
                 turn = 'white';
               });
               move.appendChild(button);
@@ -624,6 +660,7 @@ function moveFigure(currentFigure) {
                 currentFigure.position.x = moveX;
                 displayFigure(currentFigure);
                 removeMoveButtons();
+                isEnd();
                 turn = 'white';
               });
               move.appendChild(button);
@@ -665,6 +702,7 @@ function moveFigure(currentFigure) {
                 currentFigure.position.x = moveX;
                 displayFigure(currentFigure);
                 removeMoveButtons();
+                isEnd();
                 turn = 'white';
               });
               move.appendChild(button);
@@ -706,6 +744,7 @@ function moveFigure(currentFigure) {
                 currentFigure.position.x = moveX;
                 displayFigure(currentFigure);
                 removeMoveButtons();
+                isEnd();
                 turn = 'white';
               });
               move.appendChild(button);
@@ -769,6 +808,7 @@ function moveFigure(currentFigure) {
                   currentFigure.position.x = moveX;
                   displayFigure(currentFigure);
                   removeMoveButtons();
+                  isEnd();
                   turn = 'white';
                 });
                 move.appendChild(button);
