@@ -1,16 +1,8 @@
-let whitePlayer = [];
-let blackPlayer = [];
-
-let board = [];
-for(let i = 0; i < 8; i++) {
-  board[i] = [];
-  for(let j = 0; j < 8; j++) {
-    board[i][j] = 'none';
-  }
-}
-
-let turn = 'white';
-let idNumber = 1;
+let whitePlayer;
+let blackPlayer;
+let board;
+let turn;
+let idNumber;
 
 function inBoard(x, y) {
   if(x < 'A' || x >'H') {
@@ -22,29 +14,31 @@ function inBoard(x, y) {
   }
 }
 
+function reset() {
+  console.log('reset');
+  const squares = document.querySelectorAll('.square');
+  squares.forEach((square) => {
+    square.innerHTML = '';
+  });
+  setChess();
+}
+
 function isEnd() {
-  let count = 0;
   whitePlayer.forEach((figure) => {
-    if(figure.active === true) {
-      count++;
+    if(figure.name === 'quinn' && figure.active === false) {
+      console.log("Black wins!");
+      reset();
+      return;
     }
   });
-  if(count === 0) {
-    console.log("Black wins!");
-    return;
-  }
-
-  count = 0;
 
   blackPlayer.forEach((figure) => {
-    if(figure.active === true) {
-      count++;
+    if(figure.name === 'quinn' && figure.active === false) {
+      console.log("White wins!");
+      reset();
+      return;
     }
   });
-  if(count === 0) {
-    console.log("White wins!");
-    return;
-  }
 }
 
 function removeMoveButtons() {
@@ -854,6 +848,20 @@ function displayFigures() {
 }
 
 function setChess() {
+  whitePlayer = [];
+  blackPlayer = [];
+
+  board = [];
+  for(let i = 0; i < 8; i++) {
+    board[i] = [];
+    for(let j = 0; j < 8; j++) {
+      board[i][j] = 'none';
+    }
+  }
+
+  turn = 'white';
+  idNumber = 1;
+
   for(let i = 'A'.charCodeAt(); i <= 'H'.charCodeAt(); i++) {
     createFigure('pawn', 'white', String.fromCharCode(i), 2);
   }
