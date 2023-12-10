@@ -50,6 +50,7 @@ main {
   display: flex;
   justify-content: center;
   width: 100%;
+  position: relative;
 }
 
 @media screen and (max-width: 800px) {
@@ -125,34 +126,36 @@ main {
   object-fit: cover;
 }
 
-/* pionek */
-.pawn {
-
+.reset-background {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #00000050;
+  position: absolute;
 }
 
-/* wieża */
-.rook {
-
+.reset-button {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 8rem;
+  height: 4rem;
+  font-size: 2rem;
+  margin: auto;
+  border-radius: 1rem;
+  border: none;
+  box-shadow: 0 0 3px 2px #000;
+  background-color: #fff;
+  color: #000;
+  cursor: pointer;
 }
 
-/* skoczek */
-.knight {
-
-}
-
-/* goniec */
-.bishop {
-
-}
-
-/* krol */
-.king {
-
-}
-
-/* hetman */
-.queen {
-
+.reset-button:focus {
+  background-color: #000;
+  color: #fff;
 }
 
 /* FOOTER */

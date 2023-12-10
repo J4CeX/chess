@@ -15,18 +15,27 @@ function inBoard(x, y) {
 }
 
 function reset() {
-  console.log('reset');
-  const squares = document.querySelectorAll('.square');
-  squares.forEach((square) => {
-    square.innerHTML = '';
+  const main = document.querySelector('main');
+  const resetBackground = document.createElement('div');
+  resetBackground.classList.add('reset-background');
+  const resetButton = document.createElement('button');
+  resetButton.classList.add('reset-button');
+  resetButton.innerHTML = 'Reset';
+  resetButton.addEventListener('click', () => {
+    const squares = document.querySelectorAll('.square');
+    squares.forEach((square) => {
+      square.innerHTML = '';
+    });
+    const garbage = main.removeChild(resetBackground);
+    setChess();
   });
-  setChess();
+  resetBackground.appendChild(resetButton);
+  main.appendChild(resetBackground);
 }
 
 function isEnd() {
   whitePlayer.forEach((figure) => {
     if(figure.name === 'quinn' && figure.active === false) {
-      console.log("Black wins!");
       reset();
       return;
     }
@@ -34,7 +43,6 @@ function isEnd() {
 
   blackPlayer.forEach((figure) => {
     if(figure.name === 'quinn' && figure.active === false) {
-      console.log("White wins!");
       reset();
       return;
     }
